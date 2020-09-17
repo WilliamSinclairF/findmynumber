@@ -1,0 +1,162 @@
+// setup initial variables
+SET difficulty level options:
+   minimum number EQUAL 1
+   Very easy: tries EQUAL infinity, maximum number EQUAL 10
+   Easy: tries EQUAL 5, maximum number EQUAL 10
+   Medium, tries EQUAL 5, maximum number EQUAL 100
+   Difficult, tries EQUAL 8, maximum number EQUAL 500
+   Very difficult, tries EQUAL 9, maximum number EQUAL 1000
+
+
+//welcome user until a difficulty level is selected
+SetGameToInitialState = (
+SEQUENCE
+  SET message EQUAL "Welcome! Please Start By Selecting A Difficulty Level."
+  SET targer number EQUAL 0
+  SET tries EQUAL 0
+  SET selected difficulty level EQUAL undefined
+  SET game over EQUAL undefined
+  SET user number EQUAL undefined
+  SET my number EQUAL undefined
+
+  WHILE difficulty level EQUAL undefined
+//ask user to select difficutly and show welcome message
+  SHOW user message AND  SHOW difficulty level options
+  SET difficulty level EQUAL user input
+//run this sequence if the user selects a difficulty level
+    IF (difficulty level NOT EQUAL undefined THEN
+    END LOOP)
+    ELSE (CONTINUE LOOP)
+)
+
+
+//setting up the game based on what was previously inputed
+
+SEQUENCE
+  SET game over TO false
+  SET tries EQUAL selected difficulty level.tries
+  FOR 
+      (starting number EQUAL minimum number, 
+      maximum number EQUAL difficulty level options.maximum number, 
+      INCREMENT starting number until starting number EQUAL maximum number)
+
+      // shows all numbers that the user will use for their guess
+      SHOW starting number and keep all previous numbers on display
+  
+  SET my number EQUAL random number between difficulty levels.minimum number AND difficulty levels.maximum number
+
+// game is now started
+
+  SET message TO "Guess my number!"
+  SHOW message
+  WHILE user number EQUAL undefined
+  SHOW message
+  IF user input EQUAL integer THEN END LOOP
+  ELSE LOOP
+
+//logic for what happens based on the user's input
+
+  CASE user input:
+    user input EQUAL my number: 
+    SEQUENCE
+    SET game over EQUAL true
+    set message to "Congrats, you won! Would you like to play again?"
+    WHILE game over EQUAL true
+    SHOW YES AND NO
+    IF user input EQUAL YES 
+    END LOOP
+    CALL SetGameToInitialState
+    IF user input EQUAL NO
+    END PROGRAM
+    IF user input EQUAL undefined
+    CONTINUE LOOP
+    ENDIF
+    
+    user input != my number:
+    SEQUENCE 
+    SET tries EQUAL tries - 1
+    IF (tries EQUAL 0
+    set game over EQUAL true
+    set message EQUAL "Sorry, game over! My number was " ADD my number
+    WHILE game over EQUAL true
+    SHOW YES AND NO
+    IF user input EQUAL YES 
+    END LOOP
+    ENDIF
+    CALL SetGameToInitialState
+
+    IF user input EQUAL NO
+    SEQUENCE
+    END IF
+    END PROGRAM
+
+    IF user input EQUAL undefined
+    CONTINUE LOOP
+    ENDIF)
+
+    ELSE (
+      IF (user input > my number
+      SEQUENCE
+      set message EQUAL "My number is lower"
+      SHOW message)
+
+      IF (user input < my number
+      SEQUENCE
+      set message EQUAL "My number is higher"
+      SHOW message
+      )
+      ENDIF
+    )
+
+
+    
+
+    
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+//ask user to select difficutly
+
+//difficulty levels:
+
+// Very easy: Unlimited trials, 1 to 10
+// Easy: 5 tries, 1 to 10
+// Medium, 5 tries, 1 to 100
+// Difficult, 8 tries, 1 to 500
+// Very difficult, 9 tries, 1 to 1000
+
+//game over = false
+
+//number of tries = selected game difficulty.tries
+
+//once difficulty is chosen, select random number
+
+//ask user for first guess
+
+//if guess is incorrect and game is not very easy, remove one guess
+
+//if game is very easy, print "Oh no! Incorrect number."
+
+// else print "Oh no! Incorrect number. Remaining tries:" game difficulty.tries - 1
+
+//if guess is incorrect, show if number is larger or smaller than guess
+
+if guess is incorrect and tries = 0, game over = true
+
+//if guess is correct, game over = true and player gets congrats
+
+
+if game over = true, prompt user to end program or start new game
