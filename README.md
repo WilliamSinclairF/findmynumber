@@ -4,5 +4,5 @@
 
 # Install:
 
-run \$ npm install
-(not too many dependancies, just fancy icons!)
+npm install
+(not many dependancies, just fancy icons)
