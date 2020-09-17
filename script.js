@@ -47,7 +47,6 @@ const setDifficulty = (property) => {
 
 const getMyNumber = () => {
   myNumber = Math.floor(Math.random() * maxNumber) + 1;
-  console.log(myNumber);
 };
 
 const checkInputedNumber = () => {
@@ -73,25 +72,21 @@ const isGameOver = () => {
 
 const isInputedNumberCorrect = () => {
   let numberToCheck = userSelectedNumber;
-  console.log('checking', numberToCheck);
 
   if (numberToCheck === myNumber) {
     clueIndicator.textContent = `Wow, you won! My number was ${myNumber}`;
     gameOver = true;
-    console.log('win');
     resetGame();
   } else if (numberToCheck > myNumber) {
     clueIndicator.textContent = 'lower';
     triesLeft = triesLeft - 1;
     triesLeftIndicator.textContent = triesLeft;
     isGameOver();
-    console.log('lower');
   } else if (numberToCheck < myNumber) {
     clueIndicator.textContent = 'higher';
     triesLeft = triesLeft - 1;
     triesLeftIndicator.textContent = triesLeft;
     isGameOver();
-    console.log('higher');
   } else return;
 };
 
@@ -103,66 +98,30 @@ const radioButtonEventListeners = () => {
       case 'veryeasy':
         setDifficulty('veryeasy');
         getMyNumber();
-        console.log(
-          'tries',
-          triesLeft,
-          'maxnumber',
-          maxNumber,
-          'mynumber: ',
-          myNumber
-        );
+        'tries', triesLeft, 'maxnumber', maxNumber, 'mynumber: ', myNumber;
+
         break;
 
       case 'easy':
         setDifficulty('easy');
         getMyNumber();
-        console.log(
-          'tries',
-          triesLeft,
-          'maxnumber',
-          maxNumber,
-          'mynumber: ',
-          myNumber
-        );
+        'tries', triesLeft, 'maxnumber', maxNumber, 'mynumber: ', myNumber;
         break;
 
       case 'medium':
         setDifficulty('medium');
         getMyNumber();
-        console.log(
-          'tries',
-          triesLeft,
-          'maxnumber',
-          maxNumber,
-          'mynumber: ',
-          myNumber
-        );
+        'tries', triesLeft, 'maxnumber', maxNumber, 'mynumber: ', myNumber;
         break;
 
       case 'difficult':
         setDifficulty('difficult');
         getMyNumber();
-        console.log(
-          'tries',
-          triesLeft,
-          'maxnumber',
-          maxNumber,
-          'mynumber: ',
-          myNumber
-        );
         break;
 
       case 'deadly':
         setDifficulty('deadly');
         getMyNumber();
-        console.log(
-          'tries',
-          triesLeft,
-          'maxnumber',
-          maxNumber,
-          'mynumber: ',
-          myNumber
-        );
         break;
 
       default:
@@ -176,16 +135,7 @@ const inputFieldEventListeners = () => {
     userSelectedNumber = parseInt(numberInputField.value);
     if (checkInputedNumber() === true) {
       selectedNumberIndicator.textContent = userSelectedNumber;
-      console.log(userSelectedNumber);
       isInputedNumberCorrect(userSelectedNumber);
-      console.log(
-        'tries',
-        triesLeft,
-        'maxnumber',
-        maxNumber,
-        'mynumber: ',
-        myNumber
-      );
     }
   });
 };
@@ -194,7 +144,6 @@ const gameResetEventListener = () => {
   resetbuttonsContainer.addEventListener('click', (e) => {
     switch (e.target.id) {
       case 'yes':
-        console.log(e.target.id);
         gameOver = false;
         userSelectedNumber = undefined;
         triesLeft = undefined;
@@ -213,7 +162,6 @@ const gameResetEventListener = () => {
         break;
 
       case 'no':
-        console.log(e.target.id);
         formcontainer.reset();
         heading.textContent = 'Ha. I win again.';
         resetbuttonsContainer.classList.add('hidden');
