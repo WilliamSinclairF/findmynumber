@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Find My Number</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="text-center col-12">
+        <ul class="nav text-center">
+          <li class="nav-item col-4">
+            <a
+              class="nav-link active"
+              href="https://github.com/WilliamSinclairF/findmynumber"
+              ><i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li class="nav-item col-4">
+            <a class="nav-link" href="index.html"
+              ><i class="fas fa-home"></i
+            ></a>
+          </li>
+          <li class="nav-item col-4">
+            <a
+              class="nav-link"
+              href="https://www.youtube.com/watch?v=T98PIp4omUA"
+              ><i class="fas fa-question-circle"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <div class="col-12 text-center p-2">
+        <h1 id="heading">Can you find my number?</h1>
+      </div>
+      <div class="col-12 d-flex justify-content-center mr-auto ml-auto">
+        <div class="p-2 card" id="radioinputs">
+          <h6>Pick Your Difficulty Level</h6>
+          <form id="form">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="difficultyselect"
+                value="veryeasy"
+              />
+              <label class="form-check-label" for="exampleRadios1">
+                Very Easy
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="difficultyselect"
+                value="easy"
+              />
+              <label class="form-check-label" for="exampleRadios2">
+                Easy
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="difficultyselect"
+                value="medium"
+              />
+              <label class="form-check-label" for="exampleRadios3">
+                Medium
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="difficultyselect"
+                value="difficult"
+              />
+              <label class="form-check-label" for="exampleRadios3">
+                Difficult
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="difficultyselect"
+                value="deadly"
+              />
+              <label class="form-check-label" for="exampleRadios3">
+                Deadly
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-12 text-center m-3 hidden" id="triesleftcontainer">
+        <h6>Tries left: <span id="triesleft">0</span></h6>
+        <br />
+        <h6>
+          My highest number will be:
+          <span style="color: blue" id="highestnumber">...</span>
+        </h6>
+      </div>
+
+      <div
+        class="row d-flex justify-content-center hidden"
+        id="resetbuttonscontainer"
+      >
+        <div class="mb-2 text-center">
+          <h6>Wow, great game, wanna play again?</h6>
+        </div>
+        <br />
+        <div class="text-center col-12">
+          <button class="btn btn-primary btn-lg ml-1 mr-1" id="yes">
+            Sure
+          </button>
+
+          <button class="btn btn-danger btn-lg ml-1 mr-1" id="no">Nah</button>
+        </div>
+      </div>
+
+      <div class="col-12 p-1 text-center">
+        <p style="color: red" id="errors"></p>
+      </div>
+
+      <div
+        class="text-center row d-flex justify-content-center hidden"
+        id="indicators"
+      >
+        <div class="col-4 card p-2 m-3 pt-5">
+          <h6>My clue:</h6>
+          <h6 id="clue"><strong>Waiting for your number</strong></h6>
+        </div>
+        <div class="col-4 card p-2 m-3">
+          <div>
+            <h6>You picked: <span id="selectednumber">...</span></h6>
+          </div>
+
+          <div>
+            <label> Type In Your Guess </label> <br />
+            <input type="number" min="0" max="1000" id="numberfield" />
+            <div class="m-2">
+              <button class="btn btn-primary btn-sm" id="numberinputbutton">
+                Send Guess
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="text-center col-12">
+        <small style="color: blue"
+          >Hacked together for the lols while @ the CodeBoxx bootcamp</small
+        >
+      </div>
+    </footer>
+
+    <script src="script.js" async defer></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
