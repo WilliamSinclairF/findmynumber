@@ -1,4 +1,4 @@
-## Pick a difficulty, pick a number and see if you can beat the computer.
+# Pick a difficulty, pick a number and see if you can beat the computer.
 
 ###### Having trouble winning? Try googling binary search. It'll probably still be hard, though.
 
