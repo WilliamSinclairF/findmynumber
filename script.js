@@ -6,6 +6,7 @@ const indicatorContainer = document.getElementById('indicators');
 const triesLeftContainer = document.getElementById('triesleftcontainer');
 const selectedNumberIndicator = document.getElementById('selectednumber');
 const clueIndicator = document.getElementById('clue');
+const myNumberWasIndicator = document.getElementById('mynumberwas');
 const triesLeftIndicator = document.getElementById('triesleft');
 const highestNumberIndicator = document.getElementById('highestnumber');
 const errorIndicator = document.getElementById('errors');
@@ -62,6 +63,7 @@ const checkInputedNumber = () => {
 
 const isGameOver = () => {
   if (triesLeft === 0) {
+    myNumberWasIndicator.textContent = `My number was: ${myNumber}`;
     resetGame();
     return true;
   } else {
@@ -199,6 +201,7 @@ const gameResetEventListener = () => {
         maxNumber = undefined;
         myNumber = undefined;
         formcontainer.reset();
+        myNumberWasIndicator.textContent = '';
         indicatorContainer.classList.add('hidden');
         triesLeftContainer.classList.add('hidden');
         resetbuttonsContainer.classList.add('hidden');
@@ -211,9 +214,16 @@ const gameResetEventListener = () => {
 
       case 'no':
         console.log(e.target.id);
-
+        formcontainer.reset();
         heading.textContent = 'Ha. I win again.';
         resetbuttonsContainer.classList.add('hidden');
+        myNumberWasIndicator.textContent = '';
+        indicatorContainer.classList.add('hidden');
+        triesLeftContainer.classList.add('hidden');
+        numberInputField.value = '';
+        errorIndicator.textContent = '';
+        selectedNumberIndicator.textContent = '...';
+        clueIndicator.textContent = 'Waiting for your number';
 
         break;
 
