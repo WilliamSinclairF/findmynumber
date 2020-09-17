@@ -36,6 +36,7 @@ let maxNumber = 0;
 let myNumber = 0;
 
 const setDifficulty = (property) => {
+  heading.textContent = 'Can you find my number?';
   indicatorContainer.classList.remove('hidden');
   triesLeftContainer.classList.remove('hidden');
 
@@ -98,20 +99,16 @@ const radioButtonEventListeners = () => {
       case 'veryeasy':
         setDifficulty('veryeasy');
         getMyNumber();
-        'tries', triesLeft, 'maxnumber', maxNumber, 'mynumber: ', myNumber;
-
         break;
 
       case 'easy':
         setDifficulty('easy');
         getMyNumber();
-        'tries', triesLeft, 'maxnumber', maxNumber, 'mynumber: ', myNumber;
         break;
 
       case 'medium':
         setDifficulty('medium');
         getMyNumber();
-        'tries', triesLeft, 'maxnumber', maxNumber, 'mynumber: ', myNumber;
         break;
 
       case 'difficult':
